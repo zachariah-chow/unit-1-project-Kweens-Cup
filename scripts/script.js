@@ -117,20 +117,35 @@ const startGame = () => {
     shuffleDeck(currentDeck);
 }
 
-// const drawCard = () => {
-
-// }
 let currentCard;
 
+const drawCard = () => {
+    if (currentDeck.length > 0) {
+        currentCard = currentDeck.shift()
+        renderCard();
+    } else {
+        renderNoCardsLeft();
+    }
+}
+
+
 //Card DOM Functions
+const cardEl = document.querySelector(".card-rule")
 
 const renderCard = () => {
-    currentCard = currentDeck[0];
 
-    let selectedDOMCard = document.querySelector(".card-display")
-
-    selectedDOMCard.innerHTML = `
+    cardEl.innerHTML = `
         <h1>${currentCard.rule.ruleName}</h1>
         <h2>${currentCard.rule.ruleContent}</h2>
     `
 }
+
+const renderNoCardsLeft = () => {
+
+     cardEl.innerHTML = `
+    <h1>That's a wrap!</h1>
+    <h2></h2>
+    `
+}
+
+cardEl.addEventListener("click", drawCard);
