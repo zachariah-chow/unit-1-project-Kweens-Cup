@@ -1,0 +1,61 @@
+/*test styles for testing DOM functions*/
+* {
+	margin: 0;
+	padding: 0;
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	height: 100vh;
+}
+
+header {
+	text-align: center;
+}
+
+nav {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 5vh;
+	width: 350px;
+}
+
+.header {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 10vh;
+}
+
+.card-container {
+	height: 560px;
+	width: 350px;
+	background-color: lightgrey;
+	margin: 0 auto;
+	border-radius: 10px;
+}
+
+.card-display {
+	background-color: maroon;
+	opacity: 0.9;
+	height: 560px;
+	width: 350px;
+	border-radius: 10px;
+	padding: 30px;
+	box-sizing: border-box;
+	color: yellow;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.navbar{
+	display: flex;
+	justify-content: space-around;
+	list-style-type: none;
+}
