@@ -14,3 +14,16 @@ Game begins, page displays player name, player clicks to display card.
 Card will be the focus of the page and styled in the usual way - Ace to King, 4 Suits. Rules will be displayed in the centre of card. Option for a random wild-card which will present player with a simple mini-game.
 At any point, players who have had to drink will click a drink icon which will add an update a drink counter.
 Game ends when card deck is finished or drink limit is reached.
+
+//Build-flow
+1) Build card objects:
+	a) Factory function / classes?
+	b) What object properties?
+	c) Card deck array
+2) Write modal, options and rules scripts;
+3) HTML elements
+4) CSS layout
+5) DOM Manipulation
+6) Further CSS styling
+7) Optional components:
+	a) Mini-games;
