@@ -24,4 +24,16 @@ const createCardDeck = () => {
     }
 }
 
-// createCardDeck();
+const shuffleDeck = (arr) => {
+    let cardCounter = arr.length;
+
+    //this takes a card at random position and places it at the 'top' of the cardDeck
+    while(cardCounter) {
+        arr.push(arr.splice(Math.floor(Math.random() * cardCounter), 1)[0]);
+        cardCounter -= 1;
+    }
+    //to remove
+    console.log(arr)
+}
+
+createCardDeck();
