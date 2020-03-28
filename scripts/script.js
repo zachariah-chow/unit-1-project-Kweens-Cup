@@ -30,7 +30,7 @@ const cardRules = [
     },
 
     {
-        ruleName: "Sweet Six Teen",
+        ruleName: "Sweet Six-Teen",
         ruleContent: "Everyone who is not married, drink."
     },
 
@@ -56,12 +56,12 @@ const cardRules = [
 
     {
         ruleName: "Jack, Ass",
-        ruleContent: "Do something until someone in the group laughs. All laughers, drink. If no one laughs after a minute, you drink."
+        ruleContent: "Make someone laugh. All laughers, drink. If no one laughs after a minute, you drink."
     },
 
     {
         ruleName: "Queen of Queens",
-        ruleContent: "Being the Queen that you are, replace one of the rules with your own."
+        ruleContent: "Being the Queen that you are, replace one of the rules with your own. YASSS Kween."
     },
 
     {
@@ -149,3 +149,24 @@ const renderNoCardsLeft = () => {
 }
 
 cardEl.addEventListener("click", drawCard);
+
+let restartBtn = document.querySelector(".restart-btn");
+restartBtn.addEventListener("click", startGame);
+
+    //handlers for buttons
+
+const makeVisible =(el) => {
+    el.classList.add("visible");
+}
+
+const closeBtnHandler = () => {
+    let modals = document.querySelectorAll(".modal");
+    for (const modal of modals) {
+        modal.classList.remove("visible");
+    }
+}
+let closeBtns = document.querySelectorAll(".close-btn");
+
+for (i = 0; i < closeBtns.length; i++) {
+    closeBtns[i].addEventListener("click", closeBtnHandler);
+}

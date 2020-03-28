@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
         Queen's Cup
     </title>
@@ -20,11 +21,12 @@
         </div>
         <nav>
             <ul class="navbar">
-                <li><button>Options</button></li>
-                <li><button>Rules</button></li>
-                <li><button>Restart</button></li>
+                <li><button class="options-btn nav-btn">Options</button></li>
+                <li><button class="rules-btn nav-btn">Rules</button></li>
+                <li><button class="restart-btn nav-btn">Restart</button></li>
             </ul>
         </nav>
+
         <div class="card-container">
             <div class="card-display">
                 <div class="suit-number-wrapper">
@@ -35,17 +37,52 @@
                 </div>
             </div>
         </div>
+
         <div class="options modal">
-            <ul class="player-list">
+            <div class="options-wrapper">
+                <div class="close-btn-wrapper">
+                    <button class="close-btn">X</button>
+                </div>
+                <button class="players">
+                    PLAYERS
+                </button>
+                <div class="drink-limit">
 
-            </ul>
+                </div>
+            </div>
         </div>
+
         <div class="rules modal">
-
+            <div class="rules-wrapper">
+                <div class="close-btn-wrapper">
+                    <button class="close-btn">X</button>
+                </div>
+            </div>
         </div>
-        <div class="game status">
+        <div class="game-status modal">
+            <div class="game-state-wrapper">
+                <div class="close-btn-wrapper">
+                    <button class="close-btn">X</button>
+                </div>
 
+            </div>
         </div>
+
+        <div class="player-list modal">
+            <div class="player-list-wrapper">
+                <div class="close-btn-wrapper">
+                    <button class="close-btn">X</button>
+                </div>
+                <h2>Players</h2>
+                <div class="add-player-section"></div>
+                    <input class="add-player-field"><input>
+                    <button class="add-player-btn">Add Player</button>
+                <ul class="players-list">
+
+                </ul>
+            </div>
+        </div>
+        <div class="overlay"></div>
     </main>
 </body>
 </html>
