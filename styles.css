@@ -176,7 +176,7 @@ nav {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	height: 500px;
+	height: 700px;
 }
 
 .player-list-wrapper > ul {
@@ -191,6 +191,45 @@ nav {
 	display: flex;
 	justify-content: space-between;
 	width: 200px;
+}
+
+.rules-wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.rules-wrapper > h2 {
+	margin-bottom: 20px;
+	font-weight: bold;
+}
+
+.rules-list {
+	display: grid;
+	grid-template-columns: 10px, 100px, 100px;
+	grid-template-rows: repeat(100, 0.5rem, 0.5rem, 1.5rem);
+	grid-row-gap: 2rem;
+	height: 500px;
+	width: 300px;
+	overflow: scroll;
+}
+
+.rule-card-number {
+	font-size: 1.5rem;
+	text-align: center;
+}
+
+.rule-name {
+	font-weight: 900;
+	font-size: 2rem;
+	background-color: transparent;
+	border: none;
+}
+
+.rule-content {
+	padding: 15px;
+	border-bottom: black 1px solid;
 }
 
 /*overlay*/

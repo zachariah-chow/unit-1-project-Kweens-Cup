@@ -7,6 +7,7 @@ const addRemovePlayerSection = document.querySelector(".add-remove-player-sectio
 const addPlayerBtn = document.querySelector(".add-player-btn");
 const removePlayerBtn = document.querySelector(".remove-player-btn");
 const playersList = document.querySelector(".players-list");
+const setDrinkLimitBtn = document.querySelector(".set-drink-limit-btn");
 
 optionsBtn.addEventListener("click", makeVisible.bind(this, optionsModal));
 
@@ -77,3 +78,26 @@ const addPlayerBtnHandler = () => {
 }
 
 addPlayerBtn.addEventListener("click", addPlayerBtnHandler);
+
+// Drink limit
+let drinkLimit = 0;
+let drinkLimitModal = document.querySelector(".drink-limit.modal")
+setDrinkLimitBtn.addEventListener("click", makeVisible.bind(this, drinkLimitModal));
+
+const changeDrinkLimit = (ev) => {
+    let invalidMsg = document.querySelector(".invalid-message");
+
+    if (ev.target.value < 0 ) {
+        ev.target.value = 0;
+        invalidMsg.innerText = "Please enter a number above 0. Puking will not amount to a negative drink count."
+    } else if (ev.target.value > 100) {
+        ev.target.value = 0;
+        invalidMsg.innerText = "What are you playing at? I'm not going to allow you to have more than a hundred drinks."
+    } else {
+        drinkLimit = ev.target.value;
+        invalidMsg.innerText = "";
+    }
+}
+
+const drinkLimitInput = document.querySelector(".drink-limit-input");
+drinkLimitInput.addEventListener("change", changeDrinkLimit);
