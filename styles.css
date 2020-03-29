@@ -13,6 +13,20 @@ main {
 	font-family: Raleway, sans-serif;
 }
 
+/*.background-img-overlay {
+	position: fixed;
+	z-index: 0;
+	top: 20px;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	background-image: url("https://i.pinimg.com/originals/6b/fe/96/6bfe96233c6384dff88e9ed74f8321d1.jpg");
+	background-repeat: no-repeat;
+	background-position: center;
+	z-index: -1;
+	opacity: 0.2;
+}*/
+
 header {
 	text-align: center;
 	font-size: 1.6rem;
@@ -32,6 +46,7 @@ nav {
 	border-radius: 6px;
 	border: transparent;
 	font-size: 0.8rem;
+	font-family: Raleway, sans-serif;
 }
 
 .nav-btn:hover {
@@ -47,11 +62,12 @@ nav {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	height: 10vh;
+	padding-top: 20px;
+	height: 60px;
 }
 
 .card-container {
-	height: 650px;
+	height: 550px;
 	width: 300px;
 }
 
@@ -67,12 +83,22 @@ nav {
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
-	transition: all 0.4s linear;
+	transition: background-color 0.4s linear;
+	transition: transform 0.8s ease-out;
+	backface-visibility: hidden;
 }
 
 .card-display-red {
 	background-color: darkred;
-	transition: all 0.4s linear;
+	transition: background-color 0.4s linear;
+	transition: transform 0.8s ease-out;
+	backface-visibility: hidden;
+}
+
+.flipcard {
+	transform: rotateY(360deg);
+	transition: all 0.8s ease-out;
+	backface-visibility: hidden;
 }
 
 .suit-number {
@@ -125,7 +151,7 @@ nav {
 	z-index: 3;
 	position: fixed;
 	width: 340px;
-	height: 720px;
+	height: 630px;
 	top: 150px;
 	visibility: hidden;
 	opacity: 0.95;
@@ -144,6 +170,7 @@ nav {
 	height: 20px;
 	width: 20px;
 	border-radius: 5px;
+	font-family: Raleway, sans-serif;
 }
 
 .close-btn:hover {
@@ -155,7 +182,8 @@ nav {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	height: 100%;
+	justify-content: space-between;
+	height: 78%;
 }
 
 .add-remove-players-btn, .set-drink-limit-btn {
@@ -163,20 +191,15 @@ nav {
 	height: 20%;
 	border-radius: 20px;
 	margin: 20px 0;
-}
-
-.added-player {
-	background-color: transparent;
-	height: 100%;
-	text-align: center;
-	font-size: 1rem;
+	font-size: 1.2rem;
+	font-family: Raleway, sans-serif;
 }
 
 .player-list-wrapper {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	height: 700px;
+	height: 610px;
 }
 
 .player-list-wrapper > ul {
@@ -190,8 +213,69 @@ nav {
 .add-remove-player-section {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	width: 200px;
 }
+
+.add-remove-btns {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	width: 100px;
+	height: 30px;
+}
+
+.add-remove-btns > button {
+	width: 30px;
+	border-radius: 8px;
+	height: 22px;
+	padding-bottom: 2px;
+}
+
+.added-player {
+	background-color: transparent;
+	height: 100%;
+	text-align: center;
+	font-size: 0.8rem;
+	border-radius: 4px;
+	font-family: Raleway, sans-serif;
+}
+
+.drink-count {
+	height: 100%;
+	text-align: center;
+	opacity: 0.6;
+	font-size: 0.8rem;
+	border-radius: 4px;
+	font-family: Raleway, sans-serif;
+}
+
+.drink-limit-wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	height: 400px;
+}
+
+.drink-limit-input {
+	height: 2rem;
+	width: 4rem;
+	text-align: center;
+	border-radius: 8px;
+	font-size: 1.2rem;
+	border: none;
+}
+
+.drink-limit-field {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+	width: 80%;
+	height: 35%;
+}
+
 
 .rules-wrapper {
 	display: flex;
@@ -201,8 +285,12 @@ nav {
 }
 
 .rules-wrapper > h2 {
+	margin-bottom: 10px;
+	text-decoration: underline;
+}
+
+.rules-wrapper > h4 {
 	margin-bottom: 20px;
-	font-weight: bold;
 }
 
 .rules-list {
@@ -218,6 +306,7 @@ nav {
 .rule-card-number {
 	font-size: 1.5rem;
 	text-align: center;
+	color: darkgrey;
 }
 
 .rule-name {
@@ -232,6 +321,19 @@ nav {
 	border-bottom: black 1px solid;
 }
 
+.footer {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	width: 300px;
+	height: 80px;
+	padding-bottom: 2vh;
+}
+
+.current-player-display {
+
+}
 /*overlay*/
 
 .overlay {
@@ -251,4 +353,23 @@ nav {
 	visibility: visible;
 }
 
-/*write media query (modal height etc.) for max-height 812px*/
+@media (max-height: 812px) {
+	.footer {
+		padding-bottom: 0;
+		justify-content: center;
+	}
+}
+
+/*	.background-img-overlay {
+		top: 42vh;
+		left: 0;
+		bottom: 0;
+		right: 8vw;
+	}
+
+
+@media (min-width: 870px) {
+	.background-img-overlay {
+		background-size: contain;
+	}
+}*/

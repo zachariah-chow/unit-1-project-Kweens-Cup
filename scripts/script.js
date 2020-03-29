@@ -12,17 +12,17 @@ const cardRules = [
 
     {
         ruleName:"Two For You",
-        ruleContent: "Point at two persons and tell them to drink. You can also tell one person to take two drinks."
+        ruleContent: "Choose two persons to drink, or choose one lucky person to drink twice."
     },
 
     {
         ruleName: "Three For Me",
-        ruleContent: "Take a drink."
+        ruleContent: "Drink."
     },
 
     {
         ruleName: "Hit the four",
-        ruleContent: "Last person to touch the floor with their hands must take a drink."
+        ruleContent: "Last person to touch the floor with their hands, drink."
     },
 
     {
@@ -47,12 +47,12 @@ const cardRules = [
 
     {
         ruleName: "Nine is for Rhyme",
-        ruleContent: "Say a word out loud. Moving clockwise, each player must say a word that rhymes with that word. If you're stumped for more than 3 seconds, drink."
+        ruleContent: "Say a word out loud. Moving clockwise, each person must say a word that rhymes with that word. If you're stumped for more than 3 seconds, drink."
     },
 
     {
         ruleName: "Categories",
-        ruleContent: "Choose a category. Moving clockwise, each player names something in the category. If you're stumped for more than 3 seconds, drink."
+        ruleContent: "Choose a category. Moving clockwise, each person names something in the category. If you're stumped for more than 3 seconds, drink."
     },
 
     {
@@ -62,7 +62,7 @@ const cardRules = [
 
     {
         ruleName: "Queen of Queens",
-        ruleContent: "Being the Queen that you are, replace one of the rules with your own. YASSS Kween."
+        ruleContent: "YASSSS, being the Kween that you are, replace one of the rules with your own."
     },
 
     {
@@ -107,6 +107,12 @@ const shuffleDeck = (arr) => {
 createCardDeck();
 
 //Game-mechanics
+let listOfPlayers = [];
+
+let currentPlayerIndex = 0;
+let currentPlayer = listOfPlayers[currentPlayerIndex];
+let currentPlayerDisplay = document.querySelector(".current-player-display");
+let drinkCountDisplay = document.querySelector(".drink-count-display");
 
 let currentDeck = cardDeck.map((card) => card);
 let currentCard;
@@ -115,14 +121,48 @@ const startGame = () => {
     currentDeck = cardDeck.map((card) => card);
     shuffleDeck(currentDeck);
     currentCard = currentDeck[0];
+    currentPlayer = listOfPlayers[0];
+    currentPlayerDisplay.innerText = "";
+    drinkCountDisplay.innerText = "";
+    cardRuleEl.innerHTML = "Click to begin."
+
+    cardSuitNumberEl.innerHTML = "";
+}
+
+const goToNextPlayer = () => {
+    if (currentPlayerIndex !== (listOfPlayers.length - 1)) {
+        currentPlayerIndex++;
+        currentPlayer = listOfPlayers[currentPlayerIndex]
+    } else {
+        currentPlayerIndex = 0;
+        currentPlayer = listOfPlayers[0];
+    }
+}
+
+const displayCurrentPlayer = () => {
+
+    if (listOfPlayers.length === 0) {
+        currentPlayerDisplay.innerText = "Please click on options to add players."
+        drinkCountDisplay.innerText = ""
+    } else {
+        currentPlayerDisplay.innerText = `Player: ${currentPlayer.name}`
+        drinkCountDisplay.innerText = `Drink Count: ${currentPlayer.drinkCount}`
+    }
 }
 
 const drawCard = () => {
-    if (currentDeck.length > 0) {
+
+    if (listOfPlayers.length === 0){
+        displayCurrentPlayer();
+    } else if (currentDeck.length > 0) {
+        cardEl.classList.toggle("flipcard");
         currentCard = currentDeck.shift()
-        renderCard();
+        displayCurrentPlayer();
+        goToNextPlayer();
+        setTimeout(renderCard, 50);
     } else {
-        renderNoCardsLeft();
+        cardEl.classList.toggle("flipcard");
+        setTimeout(renderNoCardsLeft, 50);
     }
 }
 
@@ -163,6 +203,17 @@ const renderNoCardsLeft = () => {
     cardSuitNumberEl.innerHTML = "";
 }
 
+const renderDrinkLimitReached = () => {
+
+    cardRuleEl.innerHTML = `
+        <h1>Stop drinking. Know your limits.</h1>
+        <h2></h2>
+    `
+
+    cardSuitNumberEl.innerHTML = "";
+
+}
+
 cardRuleEl.addEventListener("click", drawCard);
 
 const restartBtn = document.querySelector(".restart-btn");
@@ -192,7 +243,6 @@ const closeBtns = document.querySelectorAll(".close-btn");
 for (i = 0; i < closeBtns.length; i++) {
     closeBtns[i].addEventListener("click", closeBtnHandler);
 }
-
 
 //
 startGame();

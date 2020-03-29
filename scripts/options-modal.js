@@ -21,7 +21,6 @@ const addRemovePlayerBtnHandler = () => {
 addRemovePlayersBtn.addEventListener("click", addRemovePlayerBtnHandler);
 
 //List of Players Modal
-let listOfPlayers = [];
 let newPlayer = {};
 
 const changePlayerName = (ev) => {
@@ -33,10 +32,9 @@ const changePlayerName = (ev) => {
     //this way of updating the list of players upon change of name needs to be rebuilt to be more performant
     listOfPlayers.length = 0;
 
-    // for (let i = 0; i < currentPlayersEls.length; i++) {
     currentPlayersEls.forEach(el => {
         newPlayer = {
-            name: newPlayerInput.value,
+            name: el.value,
             drinkCount: 0
         }
         listOfPlayers.push(newPlayer);
@@ -75,13 +73,42 @@ const addPlayerBtnHandler = () => {
     }
 
     listOfPlayers.push(newPlayer);
+
+    if (listOfPlayers.length > 0) {
+        currentPlayer = listOfPlayers[0];
+    }
 }
 
 addPlayerBtn.addEventListener("click", addPlayerBtnHandler);
 
+const removePlayerBtnHandler = () => {
+
+
+    if (listOfPlayers.length > 0) {
+
+        let addedPlayersEls = document.querySelectorAll(".added-player");
+        let drinkCountEls = document.querySelectorAll(".drink-count")
+
+        playersList.removeChild(addedPlayersEls[addedPlayersEls.length - 1]);
+        playersList.removeChild(drinkCountEls[drinkCountEls.length -1]);
+
+        listOfPlayers.pop()
+
+    } else {
+
+        currentPlayerDisplay.innerText = "Please click on options to add players."
+        drinkCountDisplay.innerText = ""
+        currentPlayer = null;
+
+    }
+}
+
+removePlayerBtn.addEventListener("click", removePlayerBtnHandler);
+
 // Drink limit
 let drinkLimit = 0;
-let drinkLimitModal = document.querySelector(".drink-limit.modal")
+let drinkLimitModal = document.querySelector(".drink-limit.modal");
+
 setDrinkLimitBtn.addEventListener("click", makeVisible.bind(this, drinkLimitModal));
 
 const changeDrinkLimit = (ev) => {
