@@ -2,6 +2,7 @@
 
 const cardDeck = [];
 const cardSuits = ['spade', 'hearts', 'clubs', 'diamonds'];
+const cardSuitsSymbols = ['♠', '♥', '♣', '♦'];
 const cardValues = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
 const cardRules = [
     {
@@ -71,12 +72,13 @@ const cardRules = [
 ]
 
 //Factory Function for Card
-    //For card numbers, use 11 as jack, 12 as queen, 13 as king, and 14 as joker
-const createCard = (number, suit, rule) => {
+    //For card numbers, use 11 as jack, 12 as queen, 13 as king
+const createCard = (number, suit, rule, symbol) => {
     return {
         number,
         suit,
         rule,
+        symbol,
 
         testMethod() {
             console.log("this card method works");
@@ -87,7 +89,7 @@ const createCard = (number, suit, rule) => {
 const createCardDeck = () => {
     for (let i = 0; i < cardSuits.length; i++) {
         for (let j = 0; j < cardValues.length; j++) {
-            cardDeck.push(createCard(cardValues[j], cardSuits[i], cardRules[j]));
+            cardDeck.push(createCard(cardValues[j], cardSuits[i], cardRules[j], cardSuitsSymbols[i]));
         }
     }
 }
@@ -100,24 +102,20 @@ const shuffleDeck = (arr) => {
         arr.push(arr.splice(Math.floor(Math.random() * cardCounter), 1)[0]);
         cardCounter -= 1;
     }
-    //to remove
-    console.log(arr)
 }
-
-// const replaceCardRule = ()
 
 createCardDeck();
 
 //Game-mechanics
 
 let currentDeck = cardDeck.map((card) => card);
+let currentCard;
 
 const startGame = () => {
     currentDeck = cardDeck.map((card) => card);
     shuffleDeck(currentDeck);
+    currentCard = currentDeck[0];
 }
-
-let currentCard;
 
 const drawCard = () => {
     if (currentDeck.length > 0) {
@@ -130,43 +128,71 @@ const drawCard = () => {
 
 
 //Card DOM Functions
-const cardEl = document.querySelector(".card-rule")
+const cardEl = document.querySelector(".card-display");
+const cardRuleEl = document.querySelector(".card-rule");
+const cardSuitNumberEl = document.querySelector(".suit-number");
 
 const renderCard = () => {
 
-    cardEl.innerHTML = `
+    cardRuleEl.innerHTML = `
         <h1>${currentCard.rule.ruleName}</h1>
         <h2>${currentCard.rule.ruleContent}</h2>
     `
+
+    cardSuitNumberEl.innerHTML = `
+        <p>${currentCard.symbol}${currentCard.number}</p>
+    `
+
+    if (currentCard.suit === 'hearts' || currentCard.suit === 'diamonds') {
+        cardSuitNumberEl.classList.add("suit-number-red");
+        cardEl.classList.add("card-display-red");
+    } else {
+        cardSuitNumberEl.classList.remove("suit-number-red");
+        cardEl.classList.remove("card-display-red");
+    }
+
 }
 
 const renderNoCardsLeft = () => {
 
-     cardEl.innerHTML = `
-    <h1>That's a wrap!</h1>
-    <h2></h2>
+    cardRuleEl.innerHTML = `
+        <h1>That's a wrap!</h1>
+        <h2></h2>
     `
+
+    cardSuitNumberEl.innerHTML = "";
 }
 
-cardEl.addEventListener("click", drawCard);
+cardRuleEl.addEventListener("click", drawCard);
 
-let restartBtn = document.querySelector(".restart-btn");
+const restartBtn = document.querySelector(".restart-btn");
 restartBtn.addEventListener("click", startGame);
 
     //handlers for buttons
 
+const overlay = document.querySelector(".overlay");
+
 const makeVisible =(el) => {
+    overlay.classList.add("visible");
     el.classList.add("visible");
 }
 
 const closeBtnHandler = () => {
+
+    overlay.classList.remove("visible");
+
     let modals = document.querySelectorAll(".modal");
     for (const modal of modals) {
         modal.classList.remove("visible");
     }
 }
-let closeBtns = document.querySelectorAll(".close-btn");
+
+const closeBtns = document.querySelectorAll(".close-btn");
 
 for (i = 0; i < closeBtns.length; i++) {
     closeBtns[i].addEventListener("click", closeBtnHandler);
 }
+
+
+//
+startGame();

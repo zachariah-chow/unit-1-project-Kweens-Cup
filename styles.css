@@ -22,7 +22,7 @@ nav {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	height: 12vh;
+	height: 100px;
 	width: 350px;
 }
 
@@ -67,13 +67,27 @@ nav {
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
+	transition: all 0.4s linear;
+}
+
+.card-display-red {
+	background-color: darkred;
+	transition: all 0.4s linear;
 }
 
 .suit-number {
 	background-color: white;
 	border-radius: 4px;
-	height: 2rem;
-	width: 2rem;
+	height: 1.6rem;
+	width: 2.2rem;
+	font-size: 1rem;
+	text-align: center;
+	transition: all 0.4s linear;
+}
+
+.suit-number-red {
+	color: darkred;
+	transition: all 0.4s linear;
 }
 
 .suit-number-wrapper {
@@ -110,10 +124,9 @@ nav {
 	background-color: lightgrey;
 	z-index: 3;
 	position: fixed;
-	top: 10vh;
-	left: 5vw;
-	right: 5vw;
-	bottom: 5vh;
+	width: 340px;
+	height: 720px;
+	top: 150px;
 	visibility: hidden;
 	opacity: 0.95;
 	border-radius: 20px;
@@ -145,11 +158,42 @@ nav {
 	height: 100%;
 }
 
-.players {
+.add-remove-players-btn, .set-drink-limit-btn {
 	width: 80%;
 	height: 20%;
 	border-radius: 20px;
+	margin: 20px 0;
 }
+
+.added-player {
+	background-color: transparent;
+	height: 100%;
+	text-align: center;
+	font-size: 1rem;
+}
+
+.player-list-wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 500px;
+}
+
+.player-list-wrapper > ul {
+	display: grid;
+	grid-template-rows: repeat(100, 40px);
+	grid-template-columns: 150px 150px;
+	overflow: scroll;
+	border-color: transparent;
+}
+
+.add-remove-player-section {
+	display: flex;
+	justify-content: space-between;
+	width: 200px;
+}
+
+/*overlay*/
 
 .overlay {
 	background-color: rgba(0, 0, 0, 0.5);
@@ -167,3 +211,5 @@ nav {
 .visible {
 	visibility: visible;
 }
+
+/*write media query (modal height etc.) for max-height 812px*/
