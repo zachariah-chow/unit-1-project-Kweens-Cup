@@ -44,7 +44,6 @@ const changePlayerName = (ev) => {
 
 const changeDrinkCount = (ev) => {
     let drinkCounters = document.querySelectorAll(".drink-count");
-    debugger;
     for (i = 0; i < drinkCounters.length; i++) {
         if (ev.target === drinkCounters[i]) {
             listOfPlayers[i].drinkCount = ev.target.value;
