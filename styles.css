@@ -6,15 +6,16 @@
 
 body {
 	overflow: hidden;
+	position: absolute;
 }
 
 main {
+	height: 100vh;
+	width: 100vw;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
-	height: 100vh;
-	width: 100vw;
 	font-family: Raleway, sans-serif;
 }
 
@@ -366,7 +367,7 @@ button {
 	align-items: center;
 	width: 3800px;
 	height: 110px;
-	padding-bottom: 2vh;
+	padding-bottom: 2%;
 	font-size: 0.9rem;
 	color: darkgrey;
 }
@@ -439,10 +440,9 @@ button {
 @media (max-height: 813px) and (max-width: 400px) {
 
 	body {
-		width: 400px;
-		height: 813px;
+		max-width: 400px;
+		max-height: 813px;
 	}
-
 
 	.footer {
 		padding-bottom: 0;
@@ -457,8 +457,8 @@ button {
 @media (max-height: 735px) and (max-width: 420px) {
 
 	body {
-		width: 420px;
-		height: 735px;
+		max-width: 420px;
+		max-height: 735px;
 	}
 
 	.modal {
@@ -476,8 +476,8 @@ button {
 @media (max-height: 670px) and (max-width: 380px) {
 
 	body {
-		width: 380px;
-		height: 670px;
+		max-width: 380px;
+		max-height: 670px;
 	}
 
 	.modal {
@@ -531,6 +531,7 @@ button {
 }
 
 @media (min-height: 1020px) {
+
 	.modal {
 		top: 10vh;
 		height: 800px;
