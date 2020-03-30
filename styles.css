@@ -4,6 +4,10 @@
 	padding: 0;
 }
 
+body {
+	overflow: hidden;
+}
+
 main {
 	display: flex;
 	flex-direction: column;
@@ -16,8 +20,6 @@ main {
 
 .background-img-overlay {
 	position: absolute;
-	width: 100vw;
-	height: 100vh;
 	top: 10px;
 	right: 0;
 	left: 0;
@@ -26,7 +28,6 @@ main {
 	background-position: center;
 	-webkit-background-size: 150px auto;
 	-moz-background-size: 150px auto;
-	/*background-color: white;*/
 	z-index: -1;
 	opacity: 0.5;
 }
@@ -493,6 +494,21 @@ button {
 		font-size: 0.8rem;
 	}
 
+	.rules-list {
+		width: 260px;
+	}
+
+	.rule-name {
+		font-size: 1.5rem;
+	}
+
+	.background-img-overlay {
+		top: 20px;
+		left: 5px;
+		-webkit-background-size: 120px auto;
+		-moz-background-size: 120px auto;
+	}
+
 }
 
 @media (min-height: 1020px) {
@@ -511,4 +527,55 @@ button {
 		height: 600px;
 		width: 330px;
 	}
+}
+
+@media (min-height: 1360px) {
+	.modal {
+		top: 12vh;
+		height: 1000px;
+		width: 500px;
+	}
+
+	.card-display {
+		height: 900px;
+		width: 495px;
+		border-radius: 20px;
+	}
+
+	.rules-list {
+		height: 800px;
+		width: 448px;
+	}
+
+	.background-img-overlay {
+		top: 20px;
+		left: 5px;
+		-webkit-background-size: 200px auto;
+		-moz-background-size: 200px auto;
+	}
+
+
+	.suit-number {
+		background-color: white;
+		border-radius: 6px;
+		height: 2.2rem;
+		width: 3.2rem;
+		font-size: 1.5rem;
+	}
+
+	.suit-number-wrapper {
+		height: 3rem;
+		padding: 5px 5px 0 0;
+	}
+
+	.nav-btn {
+		height: 60px;
+		width: 120px;
+		border-radius: 16px;
+		font-size: 1.6rem;
+	}
+
+	.footer {
+		font-size: 1.6rem;
+}
 }
