@@ -436,7 +436,14 @@ button {
 	visibility: visible;
 }
 
-@media (max-height: 813px) {
+@media (max-height: 813px) and (max-width: 400px) {
+
+	body {
+		width: 400px;
+		height: 813px;
+	}
+
+
 	.footer {
 		padding-bottom: 0;
 		justify-content: center;
@@ -447,7 +454,13 @@ button {
 	}
 }
 
-@media (max-height: 735px) {
+@media (max-height: 735px) and (max-width: 420px) {
+
+	body {
+		width: 420px;
+		height: 735px;
+	}
+
 	.modal {
 		top: 10vh;
 		height: 570px;
@@ -460,7 +473,13 @@ button {
 	}
 }
 
-@media (max-height: 640px) {
+@media (max-height: 670px) and (max-width: 380px) {
+
+	body {
+		width: 380px;
+		height: 670px;
+	}
+
 	.modal {
 		top: 10vh;
 		height: 500px;
@@ -530,6 +549,7 @@ button {
 }
 
 @media (min-height: 1360px) {
+
 	.modal {
 		top: 12vh;
 		height: 1000px;
