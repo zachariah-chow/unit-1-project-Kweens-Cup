@@ -1,5 +1,4 @@
 //Game-State:- PLAYERS
-const optionsBtn = document.querySelector(".options-btn");
 const optionsModal = document.querySelector(".options.modal");
 const playerListModal = document.querySelector(".player-list.modal");
 const addRemovePlayersBtn = document.querySelector(".add-remove-players-btn")
@@ -52,8 +51,11 @@ const changeDrinkCount = (ev) => {
     for (i = 0; i < drinkCounters.length; i++) {
         if (ev.target === drinkCounters[i]) {
             listOfPlayers[i].drinkCount = ev.target.value;
+            checkDrinkLimit();
         }
     }
+
+    displayCurrentPlayer();
 }
 
 const addPlayerBtnHandler = () => {
@@ -96,7 +98,7 @@ const removePlayerBtnHandler = () => {
     if (listOfPlayers.length > 0) {
 
         let addedPlayersEls = document.querySelectorAll(".added-player");
-        let drinkCountEls = document.querySelectorAll(".drink-count")
+        let drinkCountEls = document.querySelectorAll(".drink-count");
 
         playersList.removeChild(addedPlayersEls[addedPlayersEls.length - 1]);
         playersList.removeChild(drinkCountEls[drinkCountEls.length -1]);
@@ -137,3 +139,11 @@ const changeDrinkLimit = (ev) => {
 
 const drinkLimitInput = document.querySelector(".drink-limit-input");
 drinkLimitInput.addEventListener("change", changeDrinkLimit);
+
+const checkDrinkLimit = () => {
+    for (const player of listOfPlayers) {
+        if (player.drinkCount >= drinkLimit && drinkLimit !== 0) {
+            document.querySelector(".warning.modal").classList.add("visible");
+        };
+    }
+}

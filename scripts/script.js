@@ -62,7 +62,7 @@ const cardRules = [
 
     {
         ruleName: "Queen of Queens",
-        ruleContent: "YASSSS, being the Kween that you are, replace one of the rules with your own."
+        ruleContent: "YASSS, being the Kween that you are, replace one of the rules with your own."
     },
 
     {
@@ -134,6 +134,7 @@ const startGame = () => {
 
     cardSuitNumberEl.innerHTML = "";
 
+    restartBtn.classList.remove("active-btn");
 }
 
 const goToNextPlayer = () => {
@@ -151,6 +152,7 @@ const goToNextPlayer = () => {
 const displayCurrentPlayer = () => {
 
     if (listOfPlayers.length === 0) {
+        optionsBtn.classList.add("active-btn");
         footer.innerText = "Please click on options to add players.";
         currentPlayerDrinkCount.innerText = "";
         nextPlayerDisplay.innerText = "";
@@ -247,18 +249,20 @@ const renderNoCardsLeft = () => {
     `
 
     cardSuitNumberEl.innerHTML = "";
+
+    restartBtn.classList.add("active-btn");
 }
 
-const renderDrinkLimitReached = () => {
+// const renderDrinkLimitReached = () => {
 
-    cardRuleEl.innerHTML = `
-        <h1>Stop drinking. Know your limits.</h1>
-        <h2></h2>
-    `
+//     cardRuleEl.innerHTML = `
+//         <h1>Stop drinking. Know your limits.</h1>
+//         <h2></h2>
+//     `
 
-    cardSuitNumberEl.innerHTML = "";
+//     cardSuitNumberEl.innerHTML = "";
 
-}
+// }
 
 cardRuleEl.addEventListener("click", drawCard);
 
@@ -266,10 +270,13 @@ const restartBtn = document.querySelector(".restart-btn");
 restartBtn.addEventListener("click", startGame);
 
     //handlers for buttons
+const optionsBtn = document.querySelector(".options-btn");
 
 const overlay = document.querySelector(".overlay");
 
 const makeVisible =(el) => {
+    restartBtn.classList.remove("active-btn");
+    optionsBtn.classList.remove("active-btn");
     overlay.classList.add("visible");
     el.classList.add("visible");
 }

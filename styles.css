@@ -53,15 +53,27 @@ button {
 	font-size: 0.8rem;
 	font-family: Raleway, sans-serif;
 	background-color:white;
+	opacity: 0.8;
 }
 
 .nav-btn:hover {
-	background-color: darkgrey;
+	background-color: darkred;
 	color: white;
 	transition: all 0.2s ease-out;
 	border-radius: 36px;
 	border: transparent;
 	text-decoration: underline;
+	opacity: 1;
+}
+
+.active-btn {
+	background-color: darkred;
+	color: white;
+	transition: all 0.2s ease-out;
+	border-radius: 36px;
+	border: transparent;
+	text-decoration: underline;
+	opacity: 1;
 }
 
 .header {
@@ -69,7 +81,9 @@ button {
 	flex-direction: column;
 	justify-content: center;
 	padding-top: 20px;
+	padding-bottom: 10px;
 	height: 60px;
+	border-bottom: 1px dashed darkred;
 }
 
 .card-display {
@@ -340,14 +354,16 @@ button {
 	height: 80px;
 	padding-bottom: 2vh;
 	font-size: 0.8rem;
+	opacity: 0.9;
 }
 
 .current-player-display, .next-player-display {
-	width: 260px;
+	width: 274px;
 	display: flex;
 	justify-content: space-between;
 	align-items: left;
 	font-size: 0.8rem;
+	margin-bottom: 2px;
 }
 
 /*overlay*/
@@ -386,6 +402,11 @@ button {
 		height: 570px;
 		width: 320px;
 	}
+
+	.card-display {
+		height: 500px;
+		width: 275px;
+	}
 }
 
 @media (max-height: 630px) {
@@ -422,3 +443,21 @@ button {
 		background-size: contain;
 	}
 }*/
+
+@media (min-height: 1020px) {
+	.modal {
+		top: 10vh;
+		height: 900px;
+		width: 504px;
+	}
+
+	.card-display {
+		height: 700px;
+		width: 385px;
+	}
+
+	.rules-list {
+		height: 700px;
+		width: 420px;
+	}
+}
