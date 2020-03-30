@@ -110,10 +110,19 @@ const removePlayerBtnHandler = () => {
 
         listOfPlayers.pop()
 
+        if (listOfPlayers.length > 0) {
+            currentPlayerIndex = listOfPlayers.length - 1;
+            currentPlayer = listOfPlayers[currentPlayerIndex];
+        } else {
+            currentPlayerIndex = 0;
+            currentPlayer = "";
+        }
+
     } else {
 
         currentPlayerDrinkCount.innerText = ""
-        currentPlayer = null;
+        currentPlayerIndex = 0;
+        currentPlayer = "";
 
         nextPlayerDisplay.innerText = ""
         nextPlayerDrinkCount.innerText = ""

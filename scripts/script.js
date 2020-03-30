@@ -217,9 +217,8 @@ const displayCurrentPlayer = () => {
         removeCurrentPlayerDrinkBtn.classList.remove("visible");
         addNextPlayerDrinkBtn.classList.add("visible");
         removeNextPlayerDrinkBtn.classList.add("visible");
-    }
 
-    else {
+    } else {
         footer.innerText = "";
         currentPlayerDisplay.innerText = `Now: ${currentPlayer.name}`;
         nextPlayerDisplay.innerText = `Next: ${listOfPlayers[currentPlayerIndex + 1].name}`;
@@ -230,7 +229,6 @@ const displayCurrentPlayer = () => {
         addNextPlayerDrinkBtn.classList.add("visible");
         removeNextPlayerDrinkBtn.classList.add("visible");
     }
-
 }
 
 const drawCard = () => {
