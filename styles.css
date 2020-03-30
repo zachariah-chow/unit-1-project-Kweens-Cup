@@ -13,19 +13,20 @@ main {
 	font-family: Raleway, sans-serif;
 }
 
-/*.background-img-overlay {
+.background-img-overlay {
 	position: fixed;
 	z-index: 0;
-	top: 20px;
+	top: 100px;
 	right: 0;
 	left: 0;
 	bottom: 0;
-	background-image: url("https://i.pinimg.com/originals/6b/fe/96/6bfe96233c6384dff88e9ed74f8321d1.jpg");
 	background-repeat: no-repeat;
 	background-position: center;
+	background-size: 40%;
 	z-index: -1;
-	opacity: 0.2;
-}*/
+	opacity: 0.5;
+}
+
 
 header {
 	text-align: center;
@@ -47,10 +48,10 @@ button {
 
 .nav-btn {
 	height: 32px;
-	width: 60px;
+	width: 80px;
 	border-radius: 6px;
 	border: transparent;
-	font-size: 0.8rem;
+	font-size: 1rem;
 	font-family: Raleway, sans-serif;
 	background-color:white;
 	opacity: 0.8;
@@ -232,6 +233,7 @@ button {
 	justify-content: space-between;
 	align-items: center;
 	width: 60%;
+	margin: 4vh 0;
 }
 
 .drink-counter {

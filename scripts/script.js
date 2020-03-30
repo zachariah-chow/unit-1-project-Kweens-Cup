@@ -71,25 +71,38 @@ const cardRules = [
     }
 ]
 
+const cardImages = [
+    "./sign-images/sign-A.png",
+    "./sign-images/sign-2.png",
+    "./sign-images/sign-3.png",
+    "./sign-images/sign-4.png",
+    "./sign-images/sign-5.png",
+    "./sign-images/sign-6.png",
+    "./sign-images/sign-7.png",
+    "./sign-images/sign-8.png",
+    "./sign-images/sign-9.png",
+    "./sign-images/sign-10.png",
+    "./sign-images/sign-J.png",
+    "./sign-images/sign-Q.png",
+    "./sign-images/sign-K.png"
+]
+
 //Factory Function for Card
     //For card numbers, use 11 as jack, 12 as queen, 13 as king
-const createCard = (number, suit, rule, symbol) => {
+const createCard = (number, suit, rule, symbol, image) => {
     return {
         number,
         suit,
         rule,
         symbol,
-
-        testMethod() {
-            console.log("this card method works");
-        }
+        image
     };
 };
 
 const createCardDeck = () => {
     for (let i = 0; i < cardSuits.length; i++) {
         for (let j = 0; j < cardValues.length; j++) {
-            cardDeck.push(createCard(cardValues[j], cardSuits[i], cardRules[j], cardSuitsSymbols[i]));
+            cardDeck.push(createCard(cardValues[j], cardSuits[i], cardRules[j], cardSuitsSymbols[i], cardImages[j]));
         }
     }
 }
@@ -200,6 +213,7 @@ const drawCard = () => {
         currentCard = currentDeck.shift()
         displayCurrentPlayer();
         setTimeout(renderCard, 80);
+        renderImage();
 
     } else if (currentDeck.length > 0) {
         cardEl.classList.toggle("flipcard");
@@ -207,6 +221,7 @@ const drawCard = () => {
         goToNextPlayer();
         displayCurrentPlayer();
         setTimeout(renderCard, 80);
+        renderImage();
 
     } else {
         cardEl.classList.toggle("flipcard");
@@ -251,6 +266,8 @@ const renderNoCardsLeft = () => {
     cardSuitNumberEl.innerHTML = "";
 
     restartBtn.classList.add("active-btn");
+
+    document.querySelector(".background-img-overlay").style.backgroundImage = "";
 }
 
 // const renderDrinkLimitReached = () => {
@@ -263,6 +280,12 @@ const renderNoCardsLeft = () => {
 //     cardSuitNumberEl.innerHTML = "";
 
 // }
+
+const renderImage = () => {
+    const backgroundImageWrapper = document.querySelector(".background-img-overlay");
+
+    backgroundImageWrapper.style.backgroundImage = `url(${currentCard.image})`;
+}
 
 cardRuleEl.addEventListener("click", drawCard);
 
