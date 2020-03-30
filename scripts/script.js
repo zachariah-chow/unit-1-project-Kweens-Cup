@@ -242,16 +242,17 @@ const drawCard = () => {
         cardEl.classList.toggle("flipcard");
         currentCard = currentDeck.shift()
         displayCurrentPlayer();
-        setTimeout(renderCard, 80);
         renderImage();
+        setTimeout(renderCard, 80);
+
 
     } else if (currentDeck.length > 0) {
         cardEl.classList.toggle("flipcard");
         currentCard = currentDeck.shift()
         goToNextPlayer();
         displayCurrentPlayer();
-        setTimeout(renderCard, 80);
         renderImage();
+        setTimeout(renderCard, 80);
 
     } else {
         cardEl.classList.toggle("flipcard");
