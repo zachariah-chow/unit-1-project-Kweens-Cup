@@ -26,8 +26,8 @@ main {
 	background-color: white;
 	z-index: -1;
 	opacity: 0.5;
-	-webkit-background-size
-	-moz-background-size
+	-webkit-background-size;
+	-moz-background-size;
 }
 
 
