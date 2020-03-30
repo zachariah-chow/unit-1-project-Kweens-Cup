@@ -136,10 +136,10 @@ const changeDrinkLimit = (ev) => {
 
     if (ev.target.value < 0 ) {
         ev.target.value = 0;
-        invalidMsg.innerText = "Please enter a number above 0. Puking will not amount to a negative drink count."
+        invalidMsg.innerText = "Please enter a number above 0. Puking does not amount to negative drinking."
     } else if (ev.target.value > 100) {
         ev.target.value = 0;
-        invalidMsg.innerText = "What are you playing at? I'm not going to allow you to have more than a hundred drinks."
+        invalidMsg.innerText = "I'm not going to allow you to have more than a hundred drinks."
     } else {
         drinkLimit = ev.target.value;
         invalidMsg.innerText = "";

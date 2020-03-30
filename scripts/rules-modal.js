@@ -24,6 +24,8 @@ currentCardRules.forEach( el => {
     cardRuleContentEl.innerText = el.ruleContent;
     cardValueEl.innerText = el.number;
 
+    cardRuleNameEl.setAttribute("spellcheck", "false");
+    cardRuleContentEl.setAttribute("spellcheck", "false");
     cardRuleNameEl.setAttribute("contenteditable", "true");
     cardRuleContentEl.setAttribute("contenteditable", "true");
 

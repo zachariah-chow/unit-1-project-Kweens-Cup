@@ -189,7 +189,7 @@ const displayCurrentPlayer = () => {
         footer.innerText = "";
         currentPlayerDisplay.innerText = `Now: ${currentPlayer.name}`;
         nextPlayerDisplay.innerText = `Next: None`;
-        currentPlayerDrinkCount.innerText = `Drink Count: ${currentPlayer.drinkCount}`;
+        currentPlayerDrinkCount.innerText = `Drank: ${currentPlayer.drinkCount}`;
         nextPlayerDrinkCount.innerText = "";
         addCurrentPlayerDrinkBtn.classList.add("visible");
         removeCurrentPlayerDrinkBtn.classList.add("visible");
@@ -200,8 +200,8 @@ const displayCurrentPlayer = () => {
         footer.innerText = "";
         currentPlayerDisplay.innerText = `Now: ${currentPlayer.name}`;
         nextPlayerDisplay.innerText = `Next: ${listOfPlayers[0].name}`;
-        currentPlayerDrinkCount.innerText = `Drink Count: ${currentPlayer.drinkCount}`;
-        nextPlayerDrinkCount.innerText = `Drink Count: ${listOfPlayers[0].drinkCount}`;
+        currentPlayerDrinkCount.innerText = `Drank: ${currentPlayer.drinkCount}`;
+        nextPlayerDrinkCount.innerText = `Drank: ${listOfPlayers[0].drinkCount}`;
         addCurrentPlayerDrinkBtn.classList.add("visible");
         removeCurrentPlayerDrinkBtn.classList.add("visible");
         addNextPlayerDrinkBtn.classList.add("visible");
@@ -212,7 +212,7 @@ const displayCurrentPlayer = () => {
         currentPlayerDisplay.innerText = ""
         nextPlayerDisplay.innerText = `Next: ${listOfPlayers[0].name}`;
         currentPlayerDrinkCount.innerText = ""
-        nextPlayerDrinkCount.innerText = `Drink Count: ${listOfPlayers[0].drinkCount}`;
+        nextPlayerDrinkCount.innerText = `Drank: ${listOfPlayers[0].drinkCount}`;
         addCurrentPlayerDrinkBtn.classList.remove("visible");
         removeCurrentPlayerDrinkBtn.classList.remove("visible");
         addNextPlayerDrinkBtn.classList.add("visible");
@@ -223,8 +223,8 @@ const displayCurrentPlayer = () => {
         footer.innerText = "";
         currentPlayerDisplay.innerText = `Now: ${currentPlayer.name}`;
         nextPlayerDisplay.innerText = `Next: ${listOfPlayers[currentPlayerIndex + 1].name}`;
-        currentPlayerDrinkCount.innerText = `Drink Count: ${currentPlayer.drinkCount}`;
-        nextPlayerDrinkCount.innerText = `Drink Count: ${listOfPlayers[currentPlayerIndex + 1].drinkCount}`;
+        currentPlayerDrinkCount.innerText = `Drank: ${currentPlayer.drinkCount}`;
+        nextPlayerDrinkCount.innerText = `Drank: ${listOfPlayers[currentPlayerIndex + 1].drinkCount}`;
         addCurrentPlayerDrinkBtn.classList.add("visible");
         removeCurrentPlayerDrinkBtn.classList.add("visible");
         addNextPlayerDrinkBtn.classList.add("visible");
@@ -358,8 +358,13 @@ const addCurrentDrinkBtnHandler = () => {
 }
 
 const removeCurrentDrinkBtnHandler = () => {
-    currentPlayer.drinkCount--;
-    displayCurrentPlayer();
+
+    if (currentPlayer.drinkCount === 0) {
+        return;
+    } else {
+        currentPlayer.drinkCount--;
+        displayCurrentPlayer();
+    }
 
     adjustOptionsDrinkCounter(currentPlayer);
 }
@@ -378,15 +383,26 @@ const addNextDrinkBtnHandler = () => {
 }
 
 const removeNextDrinkBtnHandler = () => {
+
     if (currentPlayerIndex === listOfPlayers.length - 1) {
-        listOfPlayers[0].drinkCount--;
-        adjustOptionsDrinkCounter(listOfPlayers[0]);
+
+        if (listOfPlayers[0].drinkCount === 0) {
+            return;
+        } else {
+            listOfPlayers[0].drinkCount--;
+            adjustOptionsDrinkCounter(listOfPlayers[0]);
+        }
+
     } else {
-        listOfPlayers[currentPlayerIndex + 1].drinkCount--;
-        adjustOptionsDrinkCounter(listOfPlayers[currentPlayerIndex + 1]);
+
+        if (listOfPlayers[currentPlayerIndex + 1].drinkCount === 0) {
+            return;
+        } else {
+            listOfPlayers[currentPlayerIndex + 1].drinkCount--;
+            adjustOptionsDrinkCounter(listOfPlayers[currentPlayerIndex + 1]);
+        }
     }
 
-    listOfPlayers[currentPlayerIndex + 1].drinkCount--;
     displayCurrentPlayer();
 }
 
