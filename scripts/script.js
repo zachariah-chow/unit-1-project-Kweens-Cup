@@ -111,8 +111,11 @@ let listOfPlayers = [];
 
 let currentPlayerIndex = 0;
 let currentPlayer = listOfPlayers[currentPlayerIndex];
-let currentPlayerDisplay = document.querySelector(".current-player-display");
-let drinkCountDisplay = document.querySelector(".drink-count-display");
+let footer = document.querySelector(".footer-message");
+let currentPlayerDisplay = document.querySelector(".current-player-name");
+let nextPlayerDisplay = document.querySelector(".next-player-name");
+let currentPlayerDrinkCount = document.querySelector(".current-player-drink-count");
+let nextPlayerDrinkCount = document.querySelector(".next-player-drink-count");
 
 let currentDeck = cardDeck.map((card) => card);
 let currentCard;
@@ -121,18 +124,24 @@ const startGame = () => {
     currentDeck = cardDeck.map((card) => card);
     shuffleDeck(currentDeck);
     currentCard = currentDeck[0];
-    currentPlayer = listOfPlayers[0];
-    currentPlayerDisplay.innerText = "";
-    drinkCountDisplay.innerText = "";
-    cardRuleEl.innerHTML = "Click to begin."
+    displayCurrentPlayer();
+
+    if (listOfPlayers.length > 0) {
+        cardRuleEl.innerHTML = `${currentPlayer.name}, click to begin.`
+    } else {
+        cardRuleEl.innerHTML = `Add players to begin.`
+    }
 
     cardSuitNumberEl.innerHTML = "";
+
 }
 
 const goToNextPlayer = () => {
+
     if (currentPlayerIndex !== (listOfPlayers.length - 1)) {
         currentPlayerIndex++;
         currentPlayer = listOfPlayers[currentPlayerIndex]
+
     } else {
         currentPlayerIndex = 0;
         currentPlayer = listOfPlayers[0];
@@ -142,27 +151,64 @@ const goToNextPlayer = () => {
 const displayCurrentPlayer = () => {
 
     if (listOfPlayers.length === 0) {
-        currentPlayerDisplay.innerText = "Please click on options to add players."
-        drinkCountDisplay.innerText = ""
-    } else {
-        currentPlayerDisplay.innerText = `Player: ${currentPlayer.name}`
-        drinkCountDisplay.innerText = `Drink Count: ${currentPlayer.drinkCount}`
+        footer.innerText = "Please click on options to add players.";
+        currentPlayerDrinkCount.innerText = "";
+        nextPlayerDisplay.innerText = "";
+        nextPlayerDrinkCount.innerText = "";
+
+    } else if (listOfPlayers.length === 1) {
+        footer.innerText = "";
+        currentPlayerDisplay.innerText = `Player: ${currentPlayer.name}`;
+        nextPlayerDisplay.innerText = `Next Player: None`;
+        currentPlayerDrinkCount.innerText = `Drink Count: ${currentPlayer.drinkCount}`;
+        nextPlayerDrinkCount.innerText = "";
+
+    } else if (currentPlayerIndex === listOfPlayers.length - 1) {
+        footer.innerText = "";
+        currentPlayerDisplay.innerText = `Player: ${currentPlayer.name}`;
+        nextPlayerDisplay.innerText = `Next Player: ${listOfPlayers[0].name}`;
+        currentPlayerDrinkCount.innerText = `Drink Count: ${currentPlayer.drinkCount}`;
+        nextPlayerDrinkCount.innerText = `Drink Count: ${listOfPlayers[0].drinkCount}`;
+
+    } else if (currentDeck.length === 52) {
+        footer.innerText = "";
+        currentPlayerDisplay.innerText = ""
+        nextPlayerDisplay.innerText = `Next Player: ${listOfPlayers[0].name}`;
+        currentPlayerDrinkCount.innerText = ""
+        nextPlayerDrinkCount.innerText = `Drink Count: ${listOfPlayers[0].drinkCount}`;
     }
+
+    else {
+        footer.innerText = "";
+        currentPlayerDisplay.innerText = `Player: ${currentPlayer.name}`;
+        nextPlayerDisplay.innerText = `Next Player: ${listOfPlayers[currentPlayerIndex + 1].name}`;
+        currentPlayerDrinkCount.innerText = `Drink Count: ${currentPlayer.drinkCount}`;
+        nextPlayerDrinkCount.innerText = `Drink Count: ${listOfPlayers[currentPlayerIndex + 1].drinkCount}`;
+    }
+
 }
 
 const drawCard = () => {
 
     if (listOfPlayers.length === 0){
         displayCurrentPlayer();
-    } else if (currentDeck.length > 0) {
+
+    } else if (currentDeck.length === 52) {
         cardEl.classList.toggle("flipcard");
         currentCard = currentDeck.shift()
         displayCurrentPlayer();
+        setTimeout(renderCard, 80);
+
+    } else if (currentDeck.length > 0) {
+        cardEl.classList.toggle("flipcard");
+        currentCard = currentDeck.shift()
         goToNextPlayer();
-        setTimeout(renderCard, 50);
+        displayCurrentPlayer();
+        setTimeout(renderCard, 80);
+
     } else {
         cardEl.classList.toggle("flipcard");
-        setTimeout(renderNoCardsLeft, 50);
+        setTimeout(renderNoCardsLeft, 80);
     }
 }
 

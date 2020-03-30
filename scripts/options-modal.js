@@ -39,6 +39,12 @@ const changePlayerName = (ev) => {
         }
         listOfPlayers.push(newPlayer);
     })
+    currentPlayer = listOfPlayers[currentPlayerIndex];
+    displayCurrentPlayer();
+
+    if (currentDeck === 52) {
+        cardRuleEl.innerHTML = `${currentPlayer.name}, click to begin.`
+    }
 }
 
 const changeDrinkCount = (ev) => {
@@ -76,7 +82,10 @@ const addPlayerBtnHandler = () => {
 
     if (listOfPlayers.length > 0) {
         currentPlayer = listOfPlayers[0];
+        cardRuleEl.innerHTML = `${currentPlayer.name}, click to begin.`
     }
+
+    displayCurrentPlayer();
 }
 
 addPlayerBtn.addEventListener("click", addPlayerBtnHandler);
@@ -97,7 +106,7 @@ const removePlayerBtnHandler = () => {
     } else {
 
         currentPlayerDisplay.innerText = "Please click on options to add players."
-        drinkCountDisplay.innerText = ""
+        currentPlayerDrinkCount.innerText = ""
         currentPlayer = null;
 
     }
