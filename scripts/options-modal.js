@@ -47,14 +47,19 @@ const changePlayerName = (ev) => {
 }
 
 const changeDrinkCount = (ev) => {
-    let drinkCounters = document.querySelectorAll(".drink-count");
-    for (i = 0; i < drinkCounters.length; i++) {
-        if (ev.target === drinkCounters[i]) {
-            listOfPlayers[i].drinkCount = ev.target.value;
-            checkDrinkLimit();
+
+    if (ev.target.value < 0) {
+        ev.target.value = 0;
+    } else {
+
+        let drinkCounters = document.querySelectorAll(".drink-count");
+        for (i = 0; i < drinkCounters.length; i++) {
+            if (ev.target === drinkCounters[i]) {
+                listOfPlayers[i].drinkCount = ev.target.value;
+                checkDrinkLimit();
+            }
         }
     }
-
     displayCurrentPlayer();
 }
 
@@ -107,9 +112,11 @@ const removePlayerBtnHandler = () => {
 
     } else {
 
-        currentPlayerDisplay.innerText = "Please click on options to add players."
         currentPlayerDrinkCount.innerText = ""
         currentPlayer = null;
+
+        nextPlayerDisplay.innerText = ""
+        nextPlayerDrinkCount.innerText = ""
 
     }
 }

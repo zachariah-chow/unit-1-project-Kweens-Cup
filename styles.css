@@ -16,7 +16,7 @@ main {
 .background-img-overlay {
 	position: fixed;
 	z-index: 0;
-	top: 100px;
+	top: 50px;
 	right: 0;
 	left: 0;
 	bottom: 0;
@@ -38,7 +38,7 @@ nav {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	height: 100px;
+	height: 60px;
 	width: 350px;
 }
 
@@ -90,7 +90,7 @@ button {
 .card-display {
 	background-color: black;
 	opacity: 0.9;
-	height: 540px;
+	height: 500px;
 	width: 300px;
 	border-radius: 10px;
 	padding: 10px;
@@ -259,21 +259,29 @@ button {
 	background-color: transparent;
 	height: 100%;
 	text-align: center;
-	font-size: 0.8rem;
+	font-size: 1rem;
 	border: none;
 	font-family: Raleway, sans-serif;
 	width: 92%;
+}
+
+.added-player:focus {
+	outline: none;
 }
 
 .drink-count {
 	height: 100%;
 	text-align: center;
 	opacity: 0.6;
-	font-size: 0.8rem;
+	font-size: 1rem;
 	background-color: transparent;
 	border: none;
 	font-family: Raleway, sans-serif;
 	width: 92%;
+}
+
+.drink-count:focus {
+	outline: none;
 }
 
 .drink-limit-wrapper {
@@ -353,9 +361,9 @@ button {
 	justify-content: space-around;
 	align-items: center;
 	width: 280px;
-	height: 80px;
+	height: 120px;
 	padding-bottom: 2vh;
-	font-size: 0.8rem;
+	font-size: 0.9rem;
 	opacity: 0.9;
 }
 
@@ -364,8 +372,9 @@ button {
 	display: flex;
 	justify-content: space-between;
 	align-items: left;
-	font-size: 0.8rem;
-	margin-bottom: 2px;
+	margin-bottom: 1px;
+	height: 24px;
+	font-size: 1rem;
 }
 
 /*overlay*/
@@ -406,8 +415,8 @@ button {
 	}
 
 	.card-display {
-		height: 500px;
-		width: 275px;
+		height: 480px;
+		width: 264px;
 	}
 }
 
@@ -419,8 +428,8 @@ button {
 	}
 
 	.card-display {
-		height: 450px;
-		width: 247.5px;
+		height: 400px;
+		width: 220px;
 	}
 
 	header {
@@ -429,7 +438,22 @@ button {
 
 	nav {
 		width: 320px;
+		height: 90px;
 	}
+
+	.nav-btn {
+	font-size: 0.8rem;
+	height: 24px;
+}
+
+	.footer {
+		font-size: 0.8rem;
+	}
+
+	.current-player-display, .next-player-display {
+		font-size: 0.8rem;
+	}
+
 }
 
 /*	.background-img-overlay {

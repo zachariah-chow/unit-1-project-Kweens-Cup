@@ -140,7 +140,7 @@ const startGame = () => {
     displayCurrentPlayer();
 
     if (listOfPlayers.length > 0) {
-        cardRuleEl.innerHTML = `${currentPlayer.name}, click to begin.`
+        cardRuleEl.innerHTML = `${currentPlayer.name}, tap to begin.`
     } else {
         cardRuleEl.innerHTML = `Add players to begin.`
     }
@@ -173,30 +173,30 @@ const displayCurrentPlayer = () => {
 
     } else if (listOfPlayers.length === 1) {
         footer.innerText = "";
-        currentPlayerDisplay.innerText = `Player: ${currentPlayer.name}`;
-        nextPlayerDisplay.innerText = `Next Player: None`;
+        currentPlayerDisplay.innerText = `Now: ${currentPlayer.name}`;
+        nextPlayerDisplay.innerText = `Next: None`;
         currentPlayerDrinkCount.innerText = `Drink Count: ${currentPlayer.drinkCount}`;
         nextPlayerDrinkCount.innerText = "";
 
     } else if (currentPlayerIndex === listOfPlayers.length - 1) {
         footer.innerText = "";
-        currentPlayerDisplay.innerText = `Player: ${currentPlayer.name}`;
-        nextPlayerDisplay.innerText = `Next Player: ${listOfPlayers[0].name}`;
+        currentPlayerDisplay.innerText = `Now: ${currentPlayer.name}`;
+        nextPlayerDisplay.innerText = `Next: ${listOfPlayers[0].name}`;
         currentPlayerDrinkCount.innerText = `Drink Count: ${currentPlayer.drinkCount}`;
         nextPlayerDrinkCount.innerText = `Drink Count: ${listOfPlayers[0].drinkCount}`;
 
     } else if (currentDeck.length === 52) {
         footer.innerText = "";
         currentPlayerDisplay.innerText = ""
-        nextPlayerDisplay.innerText = `Next Player: ${listOfPlayers[0].name}`;
+        nextPlayerDisplay.innerText = `Next: ${listOfPlayers[0].name}`;
         currentPlayerDrinkCount.innerText = ""
         nextPlayerDrinkCount.innerText = `Drink Count: ${listOfPlayers[0].drinkCount}`;
     }
 
     else {
         footer.innerText = "";
-        currentPlayerDisplay.innerText = `Player: ${currentPlayer.name}`;
-        nextPlayerDisplay.innerText = `Next Player: ${listOfPlayers[currentPlayerIndex + 1].name}`;
+        currentPlayerDisplay.innerText = `Now: ${currentPlayer.name}`;
+        nextPlayerDisplay.innerText = `Next: ${listOfPlayers[currentPlayerIndex + 1].name}`;
         currentPlayerDrinkCount.innerText = `Drink Count: ${currentPlayer.drinkCount}`;
         nextPlayerDrinkCount.innerText = `Drink Count: ${listOfPlayers[currentPlayerIndex + 1].drinkCount}`;
     }
@@ -269,17 +269,6 @@ const renderNoCardsLeft = () => {
 
     document.querySelector(".background-img-overlay").style.backgroundImage = "";
 }
-
-// const renderDrinkLimitReached = () => {
-
-//     cardRuleEl.innerHTML = `
-//         <h1>Stop drinking. Know your limits.</h1>
-//         <h2></h2>
-//     `
-
-//     cardSuitNumberEl.innerHTML = "";
-
-// }
 
 const renderImage = () => {
     const backgroundImageWrapper = document.querySelector(".background-img-overlay");
