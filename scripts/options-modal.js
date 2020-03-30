@@ -119,6 +119,8 @@ const removePlayerBtnHandler = () => {
         nextPlayerDrinkCount.innerText = ""
 
     }
+
+    displayCurrentPlayer();
 }
 
 removePlayerBtn.addEventListener("click", removePlayerBtnHandler);

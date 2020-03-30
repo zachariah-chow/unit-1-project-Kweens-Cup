@@ -133,6 +133,11 @@ let nextPlayerDrinkCount = document.querySelector(".next-player-drink-count");
 let currentDeck = cardDeck.map((card) => card);
 let currentCard;
 
+const addCurrentPlayerDrinkBtn = document.querySelectorAll(".footer-add-btn")[0];
+const removeCurrentPlayerDrinkBtn = document.querySelectorAll(".footer-remove-btn")[0];
+const addNextPlayerDrinkBtn = document.querySelectorAll(".footer-add-btn")[1]
+const removeNextPlayerDrinkBtn = document.querySelectorAll(".footer-remove-btn")[1];
+
 const startGame = () => {
     currentDeck = cardDeck.map((card) => card);
     shuffleDeck(currentDeck);
@@ -148,6 +153,10 @@ const startGame = () => {
     cardSuitNumberEl.innerHTML = "";
 
     restartBtn.classList.remove("active-btn");
+    addCurrentPlayerDrinkBtn.classList.remove("visible");
+    removeCurrentPlayerDrinkBtn.classList.remove("visible");
+    addNextPlayerDrinkBtn.classList.remove("visible");
+    removeNextPlayerDrinkBtn.classList.remove("visible");
 }
 
 const goToNextPlayer = () => {
@@ -167,9 +176,14 @@ const displayCurrentPlayer = () => {
     if (listOfPlayers.length === 0) {
         optionsBtn.classList.add("active-btn");
         footer.innerText = "Please click on options to add players.";
+        currentPlayerDisplay.innerText = "";
         currentPlayerDrinkCount.innerText = "";
         nextPlayerDisplay.innerText = "";
         nextPlayerDrinkCount.innerText = "";
+        addCurrentPlayerDrinkBtn.classList.remove("visible");
+        removeCurrentPlayerDrinkBtn.classList.remove("visible");
+        addNextPlayerDrinkBtn.classList.remove("visible");
+        removeNextPlayerDrinkBtn.classList.remove("visible");
 
     } else if (listOfPlayers.length === 1) {
         footer.innerText = "";
@@ -177,6 +191,10 @@ const displayCurrentPlayer = () => {
         nextPlayerDisplay.innerText = `Next: None`;
         currentPlayerDrinkCount.innerText = `Drink Count: ${currentPlayer.drinkCount}`;
         nextPlayerDrinkCount.innerText = "";
+        addCurrentPlayerDrinkBtn.classList.add("visible");
+        removeCurrentPlayerDrinkBtn.classList.add("visible");
+        addNextPlayerDrinkBtn.classList.remove("visible");
+        removeNextPlayerDrinkBtn.classList.remove("visible");
 
     } else if (currentPlayerIndex === listOfPlayers.length - 1) {
         footer.innerText = "";
@@ -184,6 +202,10 @@ const displayCurrentPlayer = () => {
         nextPlayerDisplay.innerText = `Next: ${listOfPlayers[0].name}`;
         currentPlayerDrinkCount.innerText = `Drink Count: ${currentPlayer.drinkCount}`;
         nextPlayerDrinkCount.innerText = `Drink Count: ${listOfPlayers[0].drinkCount}`;
+        addCurrentPlayerDrinkBtn.classList.add("visible");
+        removeCurrentPlayerDrinkBtn.classList.add("visible");
+        addNextPlayerDrinkBtn.classList.add("visible");
+        removeNextPlayerDrinkBtn.classList.add("visible");
 
     } else if (currentDeck.length === 52) {
         footer.innerText = "";
@@ -191,6 +213,10 @@ const displayCurrentPlayer = () => {
         nextPlayerDisplay.innerText = `Next: ${listOfPlayers[0].name}`;
         currentPlayerDrinkCount.innerText = ""
         nextPlayerDrinkCount.innerText = `Drink Count: ${listOfPlayers[0].drinkCount}`;
+        addCurrentPlayerDrinkBtn.classList.remove("visible");
+        removeCurrentPlayerDrinkBtn.classList.remove("visible");
+        addNextPlayerDrinkBtn.classList.add("visible");
+        removeNextPlayerDrinkBtn.classList.add("visible");
     }
 
     else {
@@ -199,6 +225,10 @@ const displayCurrentPlayer = () => {
         nextPlayerDisplay.innerText = `Next: ${listOfPlayers[currentPlayerIndex + 1].name}`;
         currentPlayerDrinkCount.innerText = `Drink Count: ${currentPlayer.drinkCount}`;
         nextPlayerDrinkCount.innerText = `Drink Count: ${listOfPlayers[currentPlayerIndex + 1].drinkCount}`;
+        addCurrentPlayerDrinkBtn.classList.add("visible");
+        removeCurrentPlayerDrinkBtn.classList.add("visible");
+        addNextPlayerDrinkBtn.classList.add("visible");
+        removeNextPlayerDrinkBtn.classList.add("visible");
     }
 
 }
@@ -308,6 +338,62 @@ const closeBtns = document.querySelectorAll(".close-btn");
 for (i = 0; i < closeBtns.length; i++) {
     closeBtns[i].addEventListener("click", closeBtnHandler);
 }
+    //Footer drink-count add and minus button handlers
+
+const adjustOptionsDrinkCounter = (player) => {
+    let drinkCountEls = document.querySelectorAll(".drink-count");
+
+    for (let i = 0; i < listOfPlayers.length; i++) {
+        if (listOfPlayers.indexOf(player) === i) {
+            drinkCountEls[i].value = player.drinkCount;
+        }
+    }
+}
+
+const addCurrentDrinkBtnHandler = () => {
+    currentPlayer.drinkCount++;
+    displayCurrentPlayer();
+
+    adjustOptionsDrinkCounter(currentPlayer);
+}
+
+const removeCurrentDrinkBtnHandler = () => {
+    currentPlayer.drinkCount--;
+    displayCurrentPlayer();
+
+    adjustOptionsDrinkCounter(currentPlayer);
+}
+
+const addNextDrinkBtnHandler = () => {
+
+    if (currentPlayerIndex === listOfPlayers.length - 1) {
+        listOfPlayers[0].drinkCount++;
+        adjustOptionsDrinkCounter(listOfPlayers[0]);
+    } else {
+        listOfPlayers[currentPlayerIndex + 1].drinkCount++;
+        adjustOptionsDrinkCounter(listOfPlayers[currentPlayerIndex + 1]);
+    }
+
+    displayCurrentPlayer();
+}
+
+const removeNextDrinkBtnHandler = () => {
+    if (currentPlayerIndex === listOfPlayers.length - 1) {
+        listOfPlayers[0].drinkCount--;
+        adjustOptionsDrinkCounter(listOfPlayers[0]);
+    } else {
+        listOfPlayers[currentPlayerIndex + 1].drinkCount--;
+        adjustOptionsDrinkCounter(listOfPlayers[currentPlayerIndex + 1]);
+    }
+
+    listOfPlayers[currentPlayerIndex + 1].drinkCount--;
+    displayCurrentPlayer();
+}
+
+addCurrentPlayerDrinkBtn.addEventListener("click", addCurrentDrinkBtnHandler);
+removeCurrentPlayerDrinkBtn.addEventListener("click", removeCurrentDrinkBtnHandler);
+addNextPlayerDrinkBtn.addEventListener("click", addNextDrinkBtnHandler);
+removeNextPlayerDrinkBtn.addEventListener("click", removeNextDrinkBtnHandler);
 
 //
 startGame();

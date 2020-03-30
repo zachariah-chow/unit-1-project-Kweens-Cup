@@ -23,6 +23,7 @@ main {
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: 150px auto;
+	background-color: white;
 	z-index: -1;
 	opacity: 0.5;
 }
@@ -360,11 +361,47 @@ button {
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
-	width: 280px;
+	width: 3800px;
 	height: 120px;
 	padding-bottom: 2vh;
 	font-size: 0.9rem;
-	opacity: 0.9;
+	color: darkgrey;
+}
+
+.footer-btns-wrapper {
+	display: flex;
+	height: 16px;
+	justify-content: space-around;
+	width: 54px;
+	margin-bottom: 1px;
+	align-items: center;
+	text-align: center;
+}
+
+.footer-add-btn {
+	font-size: 1rem;
+	padding: 3px 7px;
+	border-radius: 100%;
+	background-color: lightgrey;
+	opacity: 0.8;
+	color: darkred;
+	visibility: hidden;
+}
+
+.footer-remove-btn {
+	font-size: 1rem;
+	padding: 3px 8px;
+	border-radius: 100%;
+	background-color: lightgrey;
+	opacity: 0.8;
+	color: darkred;
+	visibility: hidden;
+}
+
+.footer-remove-btn:active, .footer-add-btn:active {
+	background-color: darkred;
+	color: white;
+	border-radius: 80%;
 }
 
 .current-player-display, .next-player-display {
