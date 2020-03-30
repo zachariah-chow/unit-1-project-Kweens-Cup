@@ -100,20 +100,20 @@ button {
 	align-items: center;
 	transition: background-color 0.4s linear;
 	transition: transform 0.8s ease-out;
-	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
 }
 
 .card-display-red {
 	background-color: darkred;
 	transition: background-color 0.4s linear;
 	transition: transform 0.8s ease-out;
-	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
 }
 
 .flipcard {
 	transform: rotateY(360deg);
 	transition: all 0.8s ease-out;
-	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
 }
 
 .suit-number {
