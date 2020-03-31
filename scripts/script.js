@@ -361,7 +361,7 @@ const addCurrentDrinkBtnHandler = () => {
 
 const removeCurrentDrinkBtnHandler = () => {
 
-    if (currentPlayer.drinkCount === 0) {
+    if (currentPlayer.drinkCount == 0) {
         return;
 
     } else {
@@ -374,7 +374,7 @@ const removeCurrentDrinkBtnHandler = () => {
 
 const addNextDrinkBtnHandler = () => {
 
-    if (currentPlayerIndex === listOfPlayers.length - 1) {
+    if (currentPlayerIndex == listOfPlayers.length - 1) {
         listOfPlayers[0].drinkCount++;
         checkDrinkLimit();
         adjustOptionsDrinkCounter(listOfPlayers[0]);
@@ -390,9 +390,9 @@ const addNextDrinkBtnHandler = () => {
 
 const removeNextDrinkBtnHandler = () => {
 
-    if (currentPlayerIndex === listOfPlayers.length - 1) {
+    if (currentPlayerIndex == listOfPlayers.length - 1) {
 
-        if (listOfPlayers[0].drinkCount === 0) {
+        if (listOfPlayers[0].drinkCount == 0) {
             return;
         } else {
             listOfPlayers[0].drinkCount--;
@@ -401,8 +401,9 @@ const removeNextDrinkBtnHandler = () => {
 
     } else {
 
-        if (listOfPlayers[currentPlayerIndex + 1].drinkCount === 0) {
+        if (listOfPlayers[currentPlayerIndex + 1].drinkCount == 0) {
             return;
+            debugger;
         } else {
             listOfPlayers[currentPlayerIndex + 1].drinkCount--;
             adjustOptionsDrinkCounter(listOfPlayers[currentPlayerIndex + 1]);
