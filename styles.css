@@ -35,7 +35,6 @@ main {
 	opacity: 0.8;
 }
 
-
 header {
 	text-align: center;
 	font-size: 1.8rem;
@@ -49,6 +48,7 @@ nav {
 	height: 60px;
 	width: 100%;
 	max-width: 780px;
+	margin-bottom: 2vh;
 }
 
 button {
@@ -56,17 +56,19 @@ button {
 }
 
 .navbar {
-	width:88%;
+	width: 88%;
+	height: 70%;
 }
 
 .nav-btn {
-	height: 32px;
-	width: 80px;
+	height: 100%;
+	width: 30%;
+	max-width: 140px;
 	border-radius: 6px;
 	border: transparent;
-	font-size: 1rem;
+	font-size: 0.9rem;
 	font-family: Raleway, sans-serif;
-	background-color:white;
+	background-color: white;
 	opacity: 0.8;
 	user-select: none;
 }
@@ -77,7 +79,6 @@ button {
 	transition: all 0.2s ease-out;
 	border-radius: 36px;
 	border: transparent;
-	text-decoration: underline;
 	opacity: 1;
 }
 
@@ -87,7 +88,6 @@ button {
 	transition: all 0.2s ease-out;
 	border-radius: 36px;
 	border: transparent;
-	text-decoration: underline;
 	opacity: 1;
 }
 
@@ -97,7 +97,8 @@ button {
 	justify-content: center;
 	padding-top: 20px;
 	padding-bottom: 10px;
-	height: 60px;
+	margin-bottom: 2vh;
+	height: 8%;
 	border-bottom: 1px dashed darkred;
 }
 
@@ -220,7 +221,7 @@ button {
 	height: 78%;
 }
 
-.add-remove-players-btn, .set-drink-limit-btn {
+.options-btns {
 	width: 80%;
 	height: 20%;
 	border-radius: 20px;
@@ -284,6 +285,7 @@ button {
 	padding: 6px 12px;
 	user-select: none;
 	color: darkred;
+	font-size: 0.9rem;
 }
 
 .add-remove-btns > button:active {
@@ -483,10 +485,56 @@ button {
 	color: darkred;
 }
 
+.instructions-wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	height: 100%;
+	width: 100%;
+	overflow: scroll;
+}
 
-/*.next-player-display > button {
-	color: darkgrey;
-}*/
+.instructions h2 {
+	text-decoration: underline;
+}
+
+.instructions-content {
+	height: auto;
+	width: 90%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.instructions-article {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+	height: auto;
+	width: 100%;
+	padding: 4vh 0;
+	margin: 2vh 0;
+	border-bottom: 1px solid black;
+}
+
+.instructions-paragraph {
+	width: 80%;
+	font-size: 1rem;
+	color: darkred;
+	text-align: center;
+	font-weight: bold;
+}
+
+.instructions-image {
+	width: 80%;
+	display: inline-block;
+	margin: 4vh 0;
+	border-radius: 8px;
+}
+
 
 .overlay {
 	background-color: rgba(0, 0, 0, 0.5);
@@ -504,6 +552,9 @@ button {
 .visible {
 	visibility: visible;
 }
+
+
+
 
 @media (max-height: 813px) and (max-width: 400px) {
 

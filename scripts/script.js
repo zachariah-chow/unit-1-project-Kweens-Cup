@@ -147,7 +147,7 @@ const startGame = () => {
     if (listOfPlayers.length > 0) {
         cardRuleEl.innerHTML = `${currentPlayer.name}, tap to begin.`
     } else {
-        cardRuleEl.innerHTML = `Add players to begin.`
+        cardRuleEl.innerHTML = `Tap options to add players.`
     }
 
     cardSuitNumberEl.innerHTML = "";
@@ -175,7 +175,7 @@ const displayCurrentPlayer = () => {
 
     if (listOfPlayers.length === 0) {
         optionsBtn.classList.add("active-btn");
-        footer.innerText = "Please click on options to add players.";
+        cardRuleEl.innerHTML = `Tap options to add players`
         currentPlayerDisplay.innerText = "";
         currentPlayerDrinkCount.innerText = "";
         nextPlayerDisplay.innerText = "";

@@ -10,7 +10,7 @@
     <script src="./scripts/script.js" defer></script>
     <script src="./scripts/options-modal.js" defer></script>
     <script src="./scripts/rules-modal.js" defer></script>
-    <script src="./scripts/game-state-modal.js" defer></script>
+    <script src="./scripts/instructions-modal.js" defer></script>
     <link rel="stylesheet" href="normalize.css">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
@@ -22,9 +22,9 @@
         </div>
         <nav>
             <ul class="navbar">
-                <li><button class="options-btn nav-btn">Options</button></li>
-                <li><button class="rules-btn nav-btn">Rules</button></li>
-                <li><button class="restart-btn nav-btn">Restart</button></li>
+                <button class="instructions-btn nav-btn">Instructions</button>
+                <button class="options-btn nav-btn">Options</button>
+                <button class="restart-btn nav-btn">Restart</button>
             </ul>
         </nav>
 
@@ -44,11 +44,14 @@
                 <div class="close-btn-wrapper">
                     <button class="close-btn">X</button>
                 </div>
-                <button class="add-remove-players-btn">
+                <button class="add-remove-players-btn options-btns">
                     Set Players & Drink-Count
                 </button>
-                <button class="set-drink-limit-btn">
+                <button class="set-drink-limit-btn options-btns">
                     Set Drink Limit
+                </button>
+                <button class="set-rules-btn options-btns">
+                    Change the Rules
                 </button>
             </div>
         </div>
@@ -100,6 +103,58 @@
                 </div>
             </div>
         </div>
+
+        <div class="instructions modal">
+            <div class="instructions-wrapper">
+                <div class="close-btn-wrapper">
+                    <button class="close-btn">X</button>
+                </div>
+                <h2>INSTRUCTIONS</h2>
+                <div class="instructions-content">
+                    <div class=instructions-article>
+                        <img class="instructions-image" src="instructions-images/add-player.png">
+                        <p class="instructions-paragraph">Tap on Options to add players.</p>
+                    </div>
+
+                    <div class=instructions-article>
+                        <img class="instructions-image" src="instructions-images/name-players.png">
+                        <p class="instructions-paragraph">Put your names down.</p>
+                    </div>
+
+                    <div class=instructions-article>
+                        <img class="instructions-image" src="instructions-images/drink-limit.png">
+                        <p class="instructions-paragraph">If you so wish, set a drink limit. <br><br> (How responsible of you.)</p>
+                    </div>
+
+                    <div class=instructions-article>
+                        <img class="instructions-image" src="instructions-images/click-to-begin.png">
+                        <p class="instructions-paragraph">Tap to flip the card and start the game.</p>
+                    </div>
+
+                    <div class=instructions-article>
+                        <img class="instructions-image" src="instructions-images/card-rule.png">
+                        <p class="instructions-paragraph">Follow the rules with your life. <br><br> Drink when ordered to. <br><br> Keep track of your alcohol addiction (or not).</p>
+                    </div>
+
+                    <div class=instructions-article>
+                        <img class="instructions-image" src="instructions-images/drink-count-options.png">
+                        <p class="instructions-paragraph">Of course, you can keep track of and change everyone's drink-count back in Options.</p>
+                    </div>
+
+                    <div class=instructions-article>
+                        <img class="instructions-image" src="instructions-images/add-drink-count.png">
+                        <p class="instructions-paragraph">Remember that drink limit you set earlier? <br><br> Don't worry, we only <i>remind</i> you of it when someone reaches it.</p>
+                    </div>
+
+                    <div class=instructions-article>
+                        <img class="instructions-image" src="instructions-images/drink-responsibly.jpg">
+                        <p class="instructions-paragraph">That is all. <br><br> Drink Responsibly. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <footer class="footer">
             <div class="current-player-display">
                 <div class="current-player-name">

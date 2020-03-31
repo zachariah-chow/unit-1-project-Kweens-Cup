@@ -1,7 +1,7 @@
-const rulesBtn = document.querySelector(".rules-btn");
+const changeTheRulesBtn = document.querySelector(".set-rules-btn");
 const rulesModal = document.querySelector(".rules.modal");
 
-rulesBtn.addEventListener("click", makeVisible.bind(this, rulesModal));
+changeTheRulesBtn.addEventListener("click", makeVisible.bind(this, rulesModal));
 
 //
 
