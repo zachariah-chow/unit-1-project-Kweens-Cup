@@ -412,10 +412,34 @@ const removeNextDrinkBtnHandler = () => {
     displayCurrentPlayer();
 }
 
+
 addCurrentPlayerDrinkBtn.addEventListener("click", addCurrentDrinkBtnHandler);
 removeCurrentPlayerDrinkBtn.addEventListener("click", removeCurrentDrinkBtnHandler);
 addNextPlayerDrinkBtn.addEventListener("click", addNextDrinkBtnHandler);
 removeNextPlayerDrinkBtn.addEventListener("click", removeNextDrinkBtnHandler);
+
+const mouseDownIntervalHandler = (handler, ev) => {
+    let timer = setInterval(handler, 150);
+    timer;
+
+    ev.target.addEventListener("mouseup", () => {
+        clearInterval(timer);
+    })
+}
+
+addCurrentPlayerDrinkBtn.addEventListener("mousedown", mouseDownIntervalHandler.bind(this, addCurrentDrinkBtnHandler));
+removeCurrentPlayerDrinkBtn.addEventListener("mousedown", mouseDownIntervalHandler.bind(this, removeCurrentDrinkBtnHandler));
+addNextPlayerDrinkBtn.addEventListener("mousedown", mouseDownIntervalHandler.bind(this, addNextDrinkBtnHandler));
+removeNextPlayerDrinkBtn.addEventListener("mousedown", mouseDownIntervalHandler.bind(this, removeNextDrinkBtnHandler));
+
+// addCurrentPlayerDrinkBtn.addEventListener("mousedown", () => {
+//     let timer = setInterval(addCurrentDrinkBtnHandler, 250);
+//     timer;
+
+//     addCurrentPlayerDrinkBtn.addEventListener("mouseup", () => {
+//         clearInterval(timer);
+//     })
+// })
 
 //
 startGame();

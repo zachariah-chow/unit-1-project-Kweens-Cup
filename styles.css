@@ -68,6 +68,7 @@ button {
 	font-family: Raleway, sans-serif;
 	background-color:white;
 	opacity: 0.8;
+	user-select: none;
 }
 
 .nav-btn:hover {
@@ -203,6 +204,7 @@ button {
 	width: 20px;
 	border-radius: 5px;
 	font-family: Raleway, sans-serif;
+	user-select: none;
 }
 
 .close-btn:hover {
@@ -225,6 +227,7 @@ button {
 	margin: 20px 0;
 	font-size: 1.2rem;
 	font-family: Raleway, sans-serif;
+	user-select: none;
 }
 
 .player-list-wrapper {
@@ -267,6 +270,7 @@ button {
 	border-radius: 8px;
 	height: 25px;
 	padding: 2px;
+	user-select: none;
 }
 
 .added-player {
@@ -416,6 +420,7 @@ button {
 	opacity: 0.8;
 	color: darkred;
 	visibility: hidden;
+	user-select: none;
 }
 
 .footer-remove-btn {
@@ -427,6 +432,7 @@ button {
 	opacity: 0.8;
 	color: darkred;
 	visibility: hidden;
+	user-select: none;
 }
 
 .footer-remove-btn:active, .footer-add-btn:active {
