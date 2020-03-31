@@ -260,6 +260,7 @@ button {
 	align-items: center;
 	width: 95%;
 	height: 25%;
+	min-height: 30px;
 	margin: 2vh 0;
 	max-width: 300px;
 }
@@ -381,7 +382,6 @@ button {
 	padding: 15px;
 	border-bottom: black 1px solid;
 }
-
 
 .warning-wrapper {
 	display: flex;
