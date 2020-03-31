@@ -44,14 +44,19 @@ header {
 
 nav {
 	display: flex;
-	flex-direction: column;
 	justify-content: center;
+	align-items: center;
 	height: 60px;
-	width: 350px;
+	width: 100%;
+	max-width: 780px;
 }
 
 button {
 	outline: none;
+}
+
+.navbar {
+	width:88%;
 }
 
 .nav-btn {
@@ -108,20 +113,20 @@ button {
 	justify-content: space-between;
 	align-items: center;
 	transition: background-color 0.4s linear;
-	transition: transform 0.8s ease-out;
+	transition: transform 0.4s ease-in-out;
 	-webkit-backface-visibility: hidden;
 }
 
 .card-display-red {
 	background-color: darkred;
 	transition: background-color 0.4s linear;
-	transition: transform 0.8s ease-out;
+	transition: transform 0.4s ease-in-out;
 	-webkit-backface-visibility: hidden;
 }
 
 .flipcard {
 	transform: rotateY(360deg);
-	transition: all 0.8s ease-out;
+	transition: all 0.4s ease-in-out;
 	-webkit-backface-visibility: hidden;
 }
 
@@ -174,9 +179,11 @@ button {
 	background-color: lightgrey;
 	z-index: 3;
 	position: fixed;
-	width: 340px;
-	height: 640px;
-	top: 14vh;
+	width: 80%;
+	height: 76%;
+	min-width: 280px;
+	max-width: 530px;
+	top: 12%;
 	visibility: hidden;
 	opacity: 0.95;
 	border-radius: 20px;
@@ -335,11 +342,9 @@ button {
 
 .rules-list {
 	display: grid;
-	grid-template-columns: 10px, 100px, 100px;
-	grid-template-rows: repeat(100, 0.5rem, 0.5rem, 1.5rem);
 	grid-row-gap: 2rem;
-	height: 500px;
-	width: 300px;
+	height: 75%;
+	width: 75%;
 	overflow: scroll;
 }
 
@@ -362,14 +367,31 @@ button {
 	border-bottom: black 1px solid;
 }
 
+
+.warning-wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	height: 70%;
+}
+
+.warning-wrapper > p {
+	width: 80%;
+	height: 50%;
+	font-size: 1rem;
+	text-align: center
+}
+
 .footer {
 	display: flex;
 	flex-direction: column;
-	justify-content: space-around;
+	justify-content: center;
 	align-items: center;
-	width: 3800px;
-	height: 110px;
-	padding-bottom: 2%;
+	width: 100%;
+	max-width: 890px;
+	height: 15%;
 	font-size: 0.9rem;
 	color: darkgrey;
 }
@@ -378,7 +400,8 @@ button {
 	display: flex;
 	height: 16px;
 	justify-content: space-around;
-	width: 54px;
+	width: 20%;
+	max-width: 64px;
 	margin-bottom: 1px;
 	align-items: center;
 	text-align: center;
@@ -413,12 +436,12 @@ button {
 }
 
 .current-player-display, .next-player-display {
-	width: 274px;
+	width: 75%;
 	display: flex;
 	justify-content: space-between;
-	align-items: left;
+	align-items: center;
 	margin-bottom: 1px;
-	height: 24px;
+	height: 30%;
 	font-size: 1rem;
 }
 
@@ -445,18 +468,9 @@ button {
 		max-width: 400px;
 		max-height: 813px;
 	}
-
-	.footer {
-		padding-bottom: 0;
-		justify-content: center;
-	}
-
-	.modal {
-		top: 12vh;
-	}
 }
 
-@media (max-height: 735px) and (max-width: 420px) {
+@media (max-height: 738px) and (max-width: 420px) {
 
 	body {
 		max-width: 420px;
@@ -482,12 +496,6 @@ button {
 		max-height: 670px;
 	}
 
-	.modal {
-		top: 10vh;
-		height: 500px;
-		width: 280px;
-	}
-
 	.card-display {
 		height: 400px;
 		width: 220px;
@@ -497,14 +505,8 @@ button {
 		font-size: 1.2rem;
 	}
 
-	nav {
-		width: 320px;
-		height: 90px;
-	}
-
 	.nav-btn {
 	font-size: 0.8rem;
-	height: 24px;
 }
 
 	.footer {
@@ -513,10 +515,6 @@ button {
 
 	.current-player-display, .next-player-display {
 		font-size: 0.8rem;
-	}
-
-	.rules-list {
-		width: 260px;
 	}
 
 	.rule-name {
@@ -534,29 +532,23 @@ button {
 
 @media (min-height: 1020px) {
 
-	.modal {
-		top: 10vh;
-		height: 800px;
-		width: 448px;
-	}
-
 	.card-display {
-		height: 600px;
-		width: 330px;
+		height: 700px;
+		width: 385px;
 	}
 
 	.rules-list {
-		height: 600px;
-		width: 330px;
+		height: 80%;
+		width: 80%;
 	}
 }
 
 @media (min-height: 1360px) {
 
 	.modal {
-		top: 12vh;
-		height: 1000px;
-		width: 500px;
+		top: 6vh;
+		height: 80%;
+		width: 100%;
 	}
 
 	.card-display {
@@ -565,11 +557,11 @@ button {
 		border-radius: 20px;
 	}
 
-	.rules-list {
+/*	.rules-list {
 		height: 800px;
 		width: 448px;
 	}
-
+*/
 	.background-img-overlay {
 		top: 20px;
 		left: 5px;
@@ -600,5 +592,5 @@ button {
 
 	.footer {
 		font-size: 1.6rem;
-}
+	}
 }

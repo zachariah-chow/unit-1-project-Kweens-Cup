@@ -41,7 +41,7 @@ const changePlayerName = (ev) => {
     currentPlayer = listOfPlayers[currentPlayerIndex];
     displayCurrentPlayer();
 
-    if (currentDeck === 52) {
+    if (currentDeck.length === 52) {
         cardRuleEl.innerHTML = `${currentPlayer.name}, click to begin.`
     }
 }
@@ -67,13 +67,13 @@ const addPlayerBtnHandler = () => {
     let newPlayerInput = document.createElement("input");
     newPlayerInput.classList.add("added-player");
     newPlayerInput.setAttribute("value", `Player ${listOfPlayers.length + 1}`);
-    newPlayerInput.setAttribute("maxlength", "15")
+    newPlayerInput.setAttribute("maxlength", "12")
     newPlayerInput.addEventListener("change", changePlayerName)
 
     let playerDrinkCountInput = document.createElement("input");
     playerDrinkCountInput.classList.add("drink-count");
     playerDrinkCountInput.setAttribute("type", "number");
-    playerDrinkCountInput.setAttribute("maxlength", "4");
+    playerDrinkCountInput.setAttribute("maxlength", "3");
     playerDrinkCountInput.value = 0;
     playerDrinkCountInput.addEventListener("change", changeDrinkCount);
 

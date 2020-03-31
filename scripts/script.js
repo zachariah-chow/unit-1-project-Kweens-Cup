@@ -188,7 +188,7 @@ const displayCurrentPlayer = () => {
     } else if (listOfPlayers.length === 1) {
         footer.innerText = "";
         currentPlayerDisplay.innerText = `Now: ${currentPlayer.name}`;
-        nextPlayerDisplay.innerText = `Next: None`;
+        nextPlayerDisplay.innerText = "";
         currentPlayerDrinkCount.innerText = `Drank: ${currentPlayer.drinkCount}`;
         nextPlayerDrinkCount.innerText = "";
         addCurrentPlayerDrinkBtn.classList.add("visible");
@@ -215,8 +215,8 @@ const displayCurrentPlayer = () => {
         nextPlayerDrinkCount.innerText = `Drank: ${listOfPlayers[0].drinkCount}`;
         addCurrentPlayerDrinkBtn.classList.remove("visible");
         removeCurrentPlayerDrinkBtn.classList.remove("visible");
-        addNextPlayerDrinkBtn.classList.add("visible");
-        removeNextPlayerDrinkBtn.classList.add("visible");
+        addNextPlayerDrinkBtn.classList.remove("visible");
+        removeNextPlayerDrinkBtn.classList.remove("visible");
 
     } else {
         footer.innerText = "";
@@ -332,6 +332,8 @@ const closeBtnHandler = () => {
     }
 }
 
+overlay.addEventListener("click", closeBtnHandler);
+
 const closeBtns = document.querySelectorAll(".close-btn");
 
 for (i = 0; i < closeBtns.length; i++) {
@@ -351,6 +353,7 @@ const adjustOptionsDrinkCounter = (player) => {
 
 const addCurrentDrinkBtnHandler = () => {
     currentPlayer.drinkCount++;
+    checkDrinkLimit();
     displayCurrentPlayer();
 
     adjustOptionsDrinkCounter(currentPlayer);
@@ -360,6 +363,7 @@ const removeCurrentDrinkBtnHandler = () => {
 
     if (currentPlayer.drinkCount === 0) {
         return;
+
     } else {
         currentPlayer.drinkCount--;
         displayCurrentPlayer();
@@ -372,9 +376,12 @@ const addNextDrinkBtnHandler = () => {
 
     if (currentPlayerIndex === listOfPlayers.length - 1) {
         listOfPlayers[0].drinkCount++;
+        checkDrinkLimit();
         adjustOptionsDrinkCounter(listOfPlayers[0]);
+
     } else {
         listOfPlayers[currentPlayerIndex + 1].drinkCount++;
+        checkDrinkLimit();
         adjustOptionsDrinkCounter(listOfPlayers[currentPlayerIndex + 1]);
     }
 
