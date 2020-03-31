@@ -433,14 +433,5 @@ removeCurrentPlayerDrinkBtn.addEventListener("mousedown", mouseDownIntervalHandl
 addNextPlayerDrinkBtn.addEventListener("mousedown", mouseDownIntervalHandler.bind(this, addNextDrinkBtnHandler));
 removeNextPlayerDrinkBtn.addEventListener("mousedown", mouseDownIntervalHandler.bind(this, removeNextDrinkBtnHandler));
 
-// addCurrentPlayerDrinkBtn.addEventListener("mousedown", () => {
-//     let timer = setInterval(addCurrentDrinkBtnHandler, 250);
-//     timer;
-
-//     addCurrentPlayerDrinkBtn.addEventListener("mouseup", () => {
-//         clearInterval(timer);
-//     })
-// })
-
 //
 startGame();
